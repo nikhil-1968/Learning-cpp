@@ -2,7 +2,6 @@
 using namespace std;
 class node
 {
-    
 public:
     int data;
     node* next;
@@ -13,6 +12,30 @@ public:
     }
     
 };
+
+int search(node* &head,int x)
+{
+    int pos=0;
+    node* current=head;
+    while(current!=NULL)
+    {
+        if(current->data==x)
+        {
+            return pos;
+        }
+        pos++;
+        current=current->next;
+    }
+    return -1;
+}
+
+void addhead(node* &head,int data)
+{
+    node* n=new node(data);
+    n->next=head;
+    head=n;
+}
+
 void pushback(node* &head,int data)
 {
     node* n=new node(data);
@@ -33,11 +56,13 @@ void pushback(node* &head,int data)
 
 void display(node* &head)
 {
-    while(head!=NULL)
+    node* current=head;
+    while(current!=NULL)
     {
-        cout<<head->data<<"\t";;
-        head=head->next;
+        cout<<current->data<<"\t";;
+        current=current->next;
     }
+    cout<<endl;
 }
 
 
@@ -45,11 +70,15 @@ int main()
 {
 
     node *LL1=NULL;
+    addhead(LL1,0);
     pushback(LL1,10);
     pushback(LL1,20);
     pushback(LL1,50);
     pushback(LL1,90);
+    
     display(LL1);
+    cout<<search(LL1, 50)<<endl;
+    
     
     
 return 0;
