@@ -1,4 +1,3 @@
-//Finding max of a numbers at right of given index
 #include <iostream>
 using namespace std;
 
@@ -22,4 +21,3 @@ int main()
     return 0;
 }
 
-//Output    3    :5    :54    :54    :121
