@@ -63,14 +63,12 @@ while(fast!=NULL&&fast->next!=NULL){
     slow=slow->next;
 }
 return slow->data;}
-int main()
-{
+int main(){
     node *LL1=NULL;
     pushback(LL1,10);
     pushback(LL1,20);
     pushback(LL1,50);
     pushback(LL1,90);
     cout<<mid(LL1);
-
-return 0;
+    return 0;
 }
