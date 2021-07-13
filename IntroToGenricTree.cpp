@@ -24,10 +24,10 @@ void printTree(node* root)
     }
 }
 node* takeInput(){
-    cout<<"Enter data";
+    cout<<"Enter data\t";
     int data;cin>>data;
     node* root=new node(data);
-    cout<<"Enter Number of children";
+    cout<<"Enter Number of children\t";
     int num;cin>>num;
     for(int i=0;i<num;i++)
     {
