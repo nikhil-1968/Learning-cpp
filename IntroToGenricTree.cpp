@@ -77,10 +77,19 @@ node* takeInputLevelWise(){
     }
     return root;
 }
+int countNodes(node* root)
+{
+    int sum=0;
+    for(int i=0;i<root->children.size();i++)
+    sum+=countNodes(root->children[i]);
+
+    return sum+1;
+}
 int main(){
     
     node* root= takeInputLevelWise();
     printTreeLevelWise(root);
+    cout<<countNodes(root);
     
 return 0;
 }
