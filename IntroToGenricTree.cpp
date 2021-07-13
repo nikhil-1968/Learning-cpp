@@ -85,11 +85,21 @@ int countNodes(node* root)
 
     return sum+1;
 }
+int heightOfTree(node* root)
+{
+    int mx=0;
+    for(int i=0;i < root->children.size();i++)
+    {
+        mx=max(mx,heightOfTree(root->children[i]));
+    }
+    return mx+1;
+}
 int main(){
     
     node* root= takeInputLevelWise();
     printTreeLevelWise(root);
     cout<<countNodes(root);
+    cout<<heightOfTree(root);
     
 return 0;
 }
