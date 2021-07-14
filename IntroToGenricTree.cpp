@@ -104,18 +104,40 @@ void printAtLevelK(node* root,int k)
   
     for(int i=0;i < root->children.size();i++)
     {
-        printAtLevelK(root->children[i],k--);
+        printAtLevelK(root->children[i],k-1);
     }
 
 }
-
+void preorder(node* root)
+{
+    cout<<root->data<<" ";
+    for(int i=0;i<root->children.size();i++)
+    preorder(root->children[i]);
+}
+void postorder(node* root)
+{
+    for(int i=0;i<root->children.size();i++)
+    postorder(root->children[i]);
+    cout<<root->data<<" ";
+}
 int main(){
-    
+    cout<<endl;
     node* root= takeInputLevelWise();
     printTreeLevelWise(root);
+    cout<<"Number of nodes : ";
     cout<<countNodes(root)<<endl;
+    cout<<"Height : ";
     cout<<heightOfTree(root)<<endl;
+    cout<<"printAtLevelK : "<<endl;
     printAtLevelK(root,1);
+    cout<<endl;
+    cout<<"Preorder : ";
+    preorder(root);
+    cout<<endl;
+    cout<<"Postorder : ";
+    postorder(root);
+    cout<<endl;
     
+    //1 4 1 2 3 4 2 6 7 1 8 1 9 1 11 0 0 0 1 10 2 11 13 0 0 0 
 return 0;
 }
