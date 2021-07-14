@@ -9,6 +9,10 @@ public:
     {
         data=val;
     }
+    ~node(){
+        for(int i=0;i<children.size();i++)
+        delete children[i];
+    }
 };
 void printTree(node* root)
 {
@@ -120,6 +124,7 @@ void postorder(node* root)
     postorder(root->children[i]);
     cout<<root->data<<" ";
 }
+
 int main(){
     cout<<endl;
     node* root= takeInputLevelWise();
