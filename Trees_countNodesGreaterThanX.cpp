@@ -70,14 +70,34 @@ int countNodesGreaterThanX(node* root,int x)
 
     return count;
 }
+int sumOfNode(node* root)
+{
+    int sum=root->data;
+    for(int i=0;i<root->children.size();i++)
+    {
+        sum+=root->children[i]->data;
+    }
+    return sum;
+}
+pair<node*,int>  nodeWithMaxSum(node* root)
+{
+    pair<node*,int> ans;
+    ans = make_pair( root,sumOfNode(root));
+    for(int i=0;i<root->children.size();i++)
+    {
+        pair<node*,int> x;
+        x=make_pair(root->children[i],sumOfNode(root->children[i]));
+        if(ans.second<x.second)
+        {return x;}
+    }
+    return ans;
+}
 int main(){
- cout<<endl;
+    cout<<endl;
     node* root= takeInputLevelWise();
     printTreeLevelWise(root);
-    int x;
-    cin>>x;
-    cout<<"Number of nodes : ";
-    cout<<countNodesGreaterThanX(root,x)<<endl;
-
+    pair<node*,int> ans=nodeWithMaxSum(root);
+    cout<<endl<<ans.first->data<<" WITH SUM "<<ans.second<<endl;
+    
 return 0;
 }
