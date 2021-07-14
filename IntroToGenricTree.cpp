@@ -94,12 +94,28 @@ int heightOfTree(node* root)
     }
     return mx+1;
 }
+void printAtLevelK(node* root,int k)
+{
+    if(k==0)
+    {
+        cout<<root->data<<endl;
+        return;
+    }
+  
+    for(int i=0;i < root->children.size();i++)
+    {
+        printAtLevelK(root->children[i],k--);
+    }
+
+}
+
 int main(){
     
     node* root= takeInputLevelWise();
     printTreeLevelWise(root);
-    cout<<countNodes(root);
-    cout<<heightOfTree(root);
+    cout<<countNodes(root)<<endl;
+    cout<<heightOfTree(root)<<endl;
+    printAtLevelK(root,1);
     
 return 0;
 }
