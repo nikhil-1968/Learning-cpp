@@ -132,8 +132,14 @@ void printTreeLevelWise(node* root){
     }  
 
 }
+int countNodes(node* root)
+{
+    if(root==NULL)  {return 0;}
+    return 1+countNodes(root->left)+countNodes(root->right);
+}
 int main(){
 node* root=takeInputLevelWise();
 printTreeLevelWise(root);
+cout<<endl<<"countNodes(root)\t"<<countNodes(root)<<endl;
 return 0;
 }  
