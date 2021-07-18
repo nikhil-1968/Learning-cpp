@@ -12,17 +12,19 @@ void printArray(int a[],int size)
    cout<<"]"<<endl;
 }
 void selectionSort(int a[],int size)
-{ 
-    int mn=a[0];
-    for(int counter=0;counter<size;counter++)//outerloop
-    for(int i=counter;i<size;i++)//innerloop
-    {   if(a[i]<a[counter])//swap
+{
+    for(int count=0;count<size-1;count++)
+    {
+        for(int i=count+1;i<size;i++)
         {
-            int temp=a[i];
-            a[i]=a[counter];
-            a[counter]=temp;
+            if(a[count]>a[i])//swap
+            {
+                int temp=a[i];  a[i]=a[count];  a[count]=temp;
+            }  
+
         }
     }
+
 }
 int main(){
 int a[]={3,2,69,4,1,42,};
