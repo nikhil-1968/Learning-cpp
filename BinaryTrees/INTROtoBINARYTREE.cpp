@@ -137,9 +137,39 @@ int countNodes(node* root)
     if(root==NULL)  {return 0;}
     return 1+countNodes(root->left)+countNodes(root->right);
 }
+int search(int in[],int st ,int end,int curr){
+    while(st<=end)
+    {
+        if(in[st]==curr)
+        {return st;}
+        st++;
+    }
+    return -1;//CASE will not come
+}
+node* buildtreeformPreAndInorder(int pre[],int in[],int st,int end)
+{
+    static int idx=0;
+    if(st> end){return NULL;}//Base case-1
+    int curr=pre[idx];
+    idx++;
+    node* root=new node(curr);
+    if(st==end){return root;}//Base case-1
+    int pos=search(in,st,end,curr);
+    root->left = buildtreeformPreAndInorder(pre,in,st,pos-1);
+    root->right=buildtreeformPreAndInorder(pre,in,pos+1,end);
+    return root;
+
+}
+int heightOfTree(node* root)
+{
+    if(root==NULL){return 0;}
+    return 1+max(heightOfTree(root->left),heightOfTree(root->right));
+}
 int main(){
-node* root=takeInputLevelWise();
+int preorder[]={1, 2, 4, 5, 3, 6, 7};
+int inorder[]={4,2,5,1,6,3,7};
+node* root = buildtreeformPreAndInorder(preorder,inorder,0,6);
 printTreeLevelWise(root);
-cout<<endl<<"countNodes(root)\t"<<countNodes(root)<<endl;
+cout<<"\nheightOfTree "<<heightOfTree(root)<<endl;
 return 0;
 }  
